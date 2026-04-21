@@ -8,14 +8,18 @@ if (isset($_POST['ocjene'])) {
 	$poruka = "";
 	$stanje = true; //pad/ne pad predmeta
 	
-	if($ocjene[0] == 1 || $ocjene[1] == 1){
-		$poruka = "Pad predmeta!";
+	if($ocjene[0] > 5 || $ocjene[1] > 5 || $ocjene[0] < 1 || $ocjene[1] < 1){
+		$poruka = "Ocjene ne smiju biti veće od 5 ili manje od 1!";
 	}
-	else{
+	else if($ocjene[0] == 1 || $ocjene[1] == 1){
+		$poruka = "Pad predmeta!";
+		
+	}else{
 		$stanje = false;
 		$prosjek = ($ocjene[0] + $ocjene[1]) / 2;
 		$konacna = round($prosjek);
-}
+	}
+
 }
 ?>
 <!DOCTYPE html>
